@@ -29,12 +29,14 @@ app.put("/users/:id", (req, res) => {
   const { id } = req.params;
   const { name } = req.body;
   // Update user with given ID
+  if (!Number.isInteger(id)) return res.status(400).send("Invalid id");
   res.send(`User with ID ${id} updated to name ${name}`);
 });
 
 app.delete("/users/:id", (req, res) => {
   const { id } = req.params;
   // Delete user with given ID
+  if (!Number.isInteger(id)) return res.status(400).send("Invalid id");
   res.send(`User with ID ${id} deleted`);
 });
 
